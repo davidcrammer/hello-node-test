@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-deployment
+  labels:
+    app: node-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-deployment
+  template:
+    metadata:
+      labels:
+        app: node-deployment
+    spec:
+      containers:
+        - name: node-deployment
+          image: registry.digitalocean.com/dc-containers-test/hello-node-app:latest
+          ports:
+            - containerPort: 8080
